@@ -3,8 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import HeroImage from '@/app/assets/Hero-Image.png'; // [cite: uploaded:sakshamkumar28/saksham_portfolio/Saksham_Portfolio-383f487f773a0edf4b3e50406d0c26f9ae4c8aa3/app/components/HeroSection.tsx]
-import { Github, Linkedin, Link as LinkIcon } from 'lucide-react'; // [cite: uploaded:sakshamkumar28/saksham_portfolio/Saksham_Portfolio-383f487f773a0edf4b3e50406d0c26f9ae4c8aa3/app/components/HeroSection.tsx]
+import HeroImage from '@/app/assets/Hero-Image.png'; //
+import { Github, Linkedin, Link as LinkIcon } from 'lucide-react'; //
 
 // --- SVG Icons for Skills (Keep these) ---
 const ReactIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -33,6 +33,7 @@ const TailwindIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 // --- Skills Data ---
 const skills = [
+  // Simplified positioning
   { id: 1, name: "React", Icon: ReactIcon, position: { top: '15%', left: '10%' }, color: 'text-cyan-400' },
   { id: 2, name: "Node.js", Icon: NodeJSIcon, position: { top: '30%', right: '15%' }, color: 'text-green-500' },
   { id: 3, name: "Python", Icon: PythonIcon, position: { bottom: '20%', left: '20%' }, color: 'text-yellow-400' },
@@ -41,7 +42,6 @@ const skills = [
   { id: 6, name: "MongoDB", Icon: MongoDbIcon, position: { top: '10%', right: '5%' }, color: 'text-green-600' },
   { id: 7, name: "Tailwind", Icon: TailwindIcon, position: { bottom: '8%', left: '45%' }, color: 'text-cyan-500' },
 ];
-
 const HeroSection = () => {
   // --- Animation Variants ---
   const containerVariants = {
@@ -121,13 +121,13 @@ const HeroSection = () => {
     }),
   };
 
-  // --- Content ---
-  const name = "SAKSHAM KUMAR";
-  const title = "Software Engineering Student";
-  const summary = "MERN Stack Developer & AI/ML Enthusiast";
+ // --- Content ---
+  const name = "SAKSHAM KUMAR"; //
+  const title = "Software Engineering Student"; //
+  const summary = "MERN Stack Developer & AI/ML Enthusiast"; //
 
   return (
-    // Added subtle background gradient
+    // Added subtle background gradient, adjusted min-height
     <div className='relative flex min-h-[90vh] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/10 px-4 py-8 dark:to-secondary/20 sm:px-6 lg:px-8'>
 
       {/* Floating Skills Container */}
@@ -135,7 +135,8 @@ const HeroSection = () => {
         {skills.map((skill, index) => (
           <motion.div
             key={skill.id}
-            className={`absolute ${skill.color} text-2xl opacity-40 dark:opacity-70 md:text-4xl lg:text-5xl`} // Increased opacity slightly
+            // Adjusted text size, opacity
+            className={`absolute ${skill.color} text-2xl opacity-40 dark:opacity-70 md:text-4xl lg:text-5xl`}
             style={{
               top: skill.position.top ?? 'auto',
               left: skill.position.left ?? 'auto',
@@ -147,6 +148,7 @@ const HeroSection = () => {
             animate={["animate", "float"]}
             custom={index}
           >
+             {/* Adjusted icon size */}
              <skill.Icon className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12" />
           </motion.div>
         ))}
@@ -161,16 +163,17 @@ const HeroSection = () => {
       >
           {/* Name */}
           <motion.h1
-              // Applied Hunters font, kept spacing tight
-              className='font-[hunters] text-4xl tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl'
+              // Applied Hunters font, adjusted margins
+              className='mb-1 font-[hunters] text-4xl tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl' // Reduced mb-2 to mb-1
               variants={itemVariants}
           >
               {name}
           </motion.h1>
 
-           {/* Title - Using default sans-serif font */}
+           {/* Title */}
           <motion.p
-              className="mb-2 text-lg font-medium text-muted-foreground sm:text-xl md:text-2xl" // Removed font-[hunters]
+              // Adjusted margins
+              className="mb-3 text-lg font-medium text-muted-foreground sm:text-xl md:text-2xl" // Reduced mb-2 to mb-3 (slightly more than name)
               variants={itemVariants}
           >
               {title}
@@ -178,22 +181,23 @@ const HeroSection = () => {
 
            {/* Image Container */}
            <motion.div
-              className='relative my-4 h-[50vw] w-[45vw] max-h-[340px] max-w-[300px] sm:my-6 sm:h-[35vw] sm:w-[30vw] md:h-[30vw] md:w-[25vw] lg:max-h-[450px] lg:max-w-[380px]'
+                // Adjusted margins and sizes
+              className='relative my-4 h-[55vw] w-[50vw] max-h-[360px] max-w-[320px] sm:my-5 sm:h-[40vw] sm:w-[35vw] md:h-[35vw] md:w-[30vw] lg:max-h-[480px] lg:max-w-[410px]' // Adjusted my, sizes, max limits
               variants={imageVariants}
-              whileHover={{ scale: 1.03 }} // Added subtle scale on hover
-              transition={{ type: 'spring', stiffness: 300, damping: 15 }} // Spring animation for hover
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
            >
               <Image src={HeroImage} alt='Saksham Kumar' layout='fill' objectFit='contain' priority className='drop-shadow-lg h-full w-full'/>
            </motion.div>
 
-           {/* Summary/Tagline - Using default sans-serif font */}
+           {/* Summary/Tagline */}
             <motion.p
-              className="mt-3 text-base font-semibold text-primary sm:text-lg md:text-xl" // Removed font-[hunters]
+              // Adjusted margin
+              className="mt-4 text-base font-semibold text-primary sm:text-lg md:text-xl" // Increased mt-3 to mt-4
               variants={itemVariants}
             >
               {summary}
           </motion.p>
-
       </motion.div>
 
 
@@ -201,19 +205,17 @@ const HeroSection = () => {
       <motion.div
         initial="hidden"
         animate="visible"
-        // Positioned bottom-right, adjusted spacing
-        className='absolute bottom-6 right-6 z-30 flex flex-row gap-3 sm:bottom-8 sm:right-8 md:gap-4' // Slightly reduced gap
+        className='absolute bottom-6 right-6 z-30 flex flex-row gap-3 sm:bottom-8 sm:right-8 md:gap-4'
       >
         {/* GitHub */}
         <motion.a
-            href="https://github.com/sakshamkumar28" // [cite: uploaded:Saksham_resume.pdf]
+            href="https://github.com/sakshamkumar28" //
             target="_blank"
             rel="noopener noreferrer"
             custom={0}
             variants={socialIconVariants}
-            whileHover={{ scale: 1.15, y: -3, transition: { duration: 0.2 } }} // Faster hover
+            whileHover={{ scale: 1.15, y: -3, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.95 }}
-            // Updated styling for a more modern look
             className='rounded-full bg-secondary/50 p-2.5 text-secondary-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-secondary/70 dark:text-secondary-foreground dark:hover:bg-primary dark:hover:text-primary-foreground'
             aria-label="GitHub Profile"
         >
@@ -222,14 +224,13 @@ const HeroSection = () => {
 
         {/* LinkedIn */}
          <motion.a
-            href="https://linkedin.com/in/saksham-kumar-405a18288/" // [cite: uploaded:Saksham_resume.pdf]
+            href="https://linkedin.com/in/saksham-kumar-405a18288/" //
             target="_blank"
             rel="noopener noreferrer"
             custom={1}
             variants={socialIconVariants}
-            whileHover={{ scale: 1.15, y: -3, transition: { duration: 0.2 } }} // Faster hover
+            whileHover={{ scale: 1.15, y: -3, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.95 }}
-             // Updated styling
             className='rounded-full bg-secondary/50 p-2.5 text-secondary-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-secondary/70 dark:text-secondary-foreground dark:hover:bg-primary dark:hover:text-primary-foreground'
             aria-label="LinkedIn Profile"
         >
@@ -238,15 +239,14 @@ const HeroSection = () => {
 
          {/* Portfolio Link */}
          <motion.a
-            href="#" // Remember to replace # with actual Portfolio link from resume/elsewhere
+            href="#" // Remember to replace #
             target="_blank"
             rel="noopener noreferrer"
             custom={2}
             variants={socialIconVariants}
-            whileHover={{ scale: 1.15, y: -3, transition: { duration: 0.2 } }} // Faster hover
+            whileHover={{ scale: 1.15, y: -3, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.95 }}
-             // Updated styling
-             className='rounded-full bg-secondary/50 p-2.5 text-secondary-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-secondary/70 dark:text-secondary-foreground dark:hover:bg-primary dark:hover:text-primary-foreground'
+            className='rounded-full bg-secondary/50 p-2.5 text-secondary-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-secondary/70 dark:text-secondary-foreground dark:hover:bg-primary dark:hover:text-primary-foreground'
             aria-label="Portfolio Website"
         >
             <LinkIcon className='h-5 w-5 sm:h-6 sm:w-6' />
@@ -258,4 +258,3 @@ const HeroSection = () => {
 }
 
 export default HeroSection;
-
