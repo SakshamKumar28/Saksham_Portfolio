@@ -17,6 +17,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'in.pinterest.com', // Also allow the placeholder domain
+        port: '',
+        pathname: '/**',
+      },
       // Add other domains here if needed in the future
     ],
   },
