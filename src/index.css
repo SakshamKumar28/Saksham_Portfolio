@@ -37,7 +37,7 @@
   }
 }
 
-/* Retro CRT lines effect overlay */
+/* Retro CRT lines effect overlay (subtle) */
 .crt-overlay::before {
   content: " ";
   display: block;
